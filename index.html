@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Firmanet Sirket Yönetim Platform</title>
+    <link rel="stylesheet" href="./index.css" />
+    <script src="./index.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Glory:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://kit.fontawesome.com/2412af4bb9.css"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/2412af4bb9.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="path/to/bootstrap.min.css" />
+    <script src="path/to/bootstrap.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- jQuery data table plugin -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css"
+    />
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"
+    ></script>
+    <!-- JavaScript code to initialize the data table -->
+    <script>
+      $(document).ready(function () {
+        $("#dataTable").DataTable({
+          bFilter: false,
+          bInfo: false,
+          bLengthChange: false,
+        });
+      });
+    </script>
+    <script></script>
+  </head>
+  <body>
+    <header class="header-container">
+      <img class="header-img" src="./images/logo_firmanet.png" alt="" />
+      <div class="header-left-container">
+        <input type="text" class="header-search-term" placeholder="search" />
+        <button class="header-button">
+          <i id="header-button-icon" class="fas fa-user-tie"></i>
+        </button>
+      </div>
+    </header>
+    <div class="body-content">
+      <div class="control-panel">
+        <p>Çağrılar</p>
+        <button
+          onclick="visableTab(event, 'tab2','tab-control-2');"
+          class="control-panel-button"
+          style="background-color: #8cbaf260"
+        >
+          Çağrı Listele
+        </button>
+        <button class="control-panel-button">Çağrı ekle</button>
+      </div>
+      <div class="tab-container">
+        <div class="tab-navigation">
+          <button id="tab-control-1" class="">
+            <a onclick="openTab(event, 'tab1','tab-control-1')">Sayfam</a>
+          </button>
+          <button style="display: none" id="tab-control-2" class="">
+            <a onclick="openTab(event, 'tab2','tab-control-2')">Çağrı Listele</a
+            ><a
+              onclick="closeTab(event, 'tab2','tab-control-2')"
+              class="closeTab"
+              >✕</a
+            >
+          </button>
+          <button style="display: none" id="tab-control-3" class="">
+            <a id="a-tab-control-3" onclick="openTab(event, 'tab3','tab-control-3')"
+              >Çağrı Düzenleme</a
+            ><a
+              onclick="closeTab(event, 'tab3','tab-control-3');"
+              class="closeTab"
+              >✕</a
+            >
+          </button>
+        </div>
+        <div class="tab-contents">
+          <!-- FIRST TAB CONTENT -->
+          <div id="tab1" class="tabcontent">
+            <div style="padding: 40px">
+              <h2>Kullanım</h2>
+              <p>1. Çağrı listele'ye tıklamak</p>
+              <p>
+                2.Tablodan bir çağrı şeçtikten sonra edit buttonu ile çağrı
+                sayfası düzenleme sayfasına yönelmek
+              </p>
+            </div>
+          </div>
+          <!-- SECOND TAB CONTENT -->
+          <div id="tab2" class="tabcontent">
+            <div style="width: 100%; border-bottom: 1px solid #525252">
+              <p style="letter-spacing: 1px; font-size: 12px; font-weight: 700">
+                Çağrı listesi
+              </p>
+            </div>
+            <div class="edit-container">
+              <button onclick="editTab(event)" class="tab-button tooltip">
+                <a href="#" id="edit-button"
+                  ><i
+                    id="tab-button-icon"
+                    class="fa-solid fa-pen-to-square"
+                  ></i>
+                </a>
+                <span class="tooltiptext">Edit</span>
+              </button>
+              <button class="tab-button tooltip">
+                <i id="tab-button-icon" class="fa-regular fa-trash-can"></i>
+                <span class="tooltiptext">Delete</span>
+              </button>
+              <button style="font-size: 16px" class="tab-button">
+                <i style="margin-right: 2px" class="fa-solid fa-plus"></i>
+                Create
+              </button>
+            </div>
+            <div class="table-container">
+              <table id="dataTable">
+                <thead>
+                  <tr>
+                    <th>Name (Job title)</th>
+                    <th>Company</th>
+                    <th>Date</th>
+                    <th>Employee</th>
+                    <th>#</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <script src="./data-tablo.js"></script>
+          </div>
+          <!-- THIRD TAB CONTENT -->
+          <div class="tabcontent" id="tab3" >
+     
+            <form class="call-handling-content">
+              <div class="row-content">
+                <div class="question-title">Çağrı Yönü*</div>
+                <div class="options">
+                  <input
+                    type="radio"
+                    id="gelen"
+                    name="fav1_language"
+                    value="gelen"
+                    checked
+                  />
+                  <label for="html">Gelen</label>
+                  <input
+                    type="radio"
+                    id="giden"
+                    style="margin-left: 40px"
+                    name="fav1_language"
+                    value="giden"
+                  />
+                  <label for="html">Giden</label>
+                </div>
+              </div>
+              <div class="row-content">
+                <div class="question-title">Tarih - Saat*</div>
+                <div class="options">
+                  <div class="datetime-container">
+                    <input type="date" id="date-from" />
+                    <input type="time" id="time-from" />
+                  </div>
+                </div>
+              </div>
+              <div class="row-content">
+                <div class="question-title">Arayan/Aranan*</div>
+                <div class="options">
+                  <input
+                    onclick="changeConnectedInput()"
+                    type="radio"
+                    id="from-connected"
+                    name="fav_language"
+                    value="kayitli-baglanti"
+                    checked
+                  />
+                  <label for="html">Kayıtlı Bağlantı</label>
+                  <input
+                    onclick="changeInput()"
+                    type="radio"
+                    id="from-not-connected"
+                    style="margin-left: 40px"
+                    name="fav_language"
+                    value="baglanti-degil"
+                  />
+                  <label for="html">Bağlantı Değil</label>
+                </div>
+              </div>
+              <div
+                style="gap: 24px; margin-top: 16px"
+                class="con-option-row-content"
+              >
+                <div id="connected-content" class="connection-content">
+                  <p id="connection-title" class="connection-title">
+                    Kayıtlı Bağlantı
+                  </p>
+                  <div class="connection-row-content">
+                    <div class="connection-question-title">Firma*</div>
+                    <select
+                      name="connected"
+                      id="subject-form-select"
+                      class="form-select"
+                      aria-label="Default select example"
+                    >
+                      <option id="company-name-form" selected></option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                  </div>
+                  <div class="connection-row-content">
+                    <div class="connection-question-title">Bağlantı*</div>
+                    <select
+                      name="connected"
+                      id="subject-form-select"
+                      class="form-select"
+                      aria-label="Default select example"
+                    >
+                      <option id="connection-form" selected></option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                  </div>
+                  <div class="connection-row-content">
+                    <div class="connection-question-title">Telefon*</div>
+                    <input
+                      style="width: 150px; padding: 4px"
+                      type="text"
+                      name="connected"
+                    />
+                  </div>
+                </div>
+                <div
+                  style="background-color: #52525240"
+                  id="not-connected-content"
+                  class="connection-content"
+                >
+                  <p
+                    style="background-color: #d4d4d4"
+                    id="not-connection-title"
+                    class="connection-title"
+                  >
+                    Bağlantı Değil
+                  </p>
+                  <div class="connection-row-content">
+                    <div class="connection-question-title">Ad*</div>
+                    <input
+                      id="not-connected1"
+                      style="width: 60%; max-width: 210px; padding: 4px"
+                      type="text"
+                      disabled
+                    />
+                  </div>
+                  <div class="connection-row-content">
+                    <div class="connection-question-title">Soyad*</div>
+                    <input
+                      id="not-connected2"
+                      style="width: 60%; max-width: 210px; padding: 4px"
+                      type="text"
+                      disabled
+                    />
+                  </div>
+                  <div class="connection-row-content">
+                    <div class="connection-question-title">Telefon*</div>
+                    <div
+                      class="connection-row-content"
+                      style="width: 63%; max-width: 220px; gap: 8px"
+                    >
+                      <select
+                        id="not-connected3"
+                        style="width: 60px; padding: 4px"
+                        class="form-select"
+                        aria-label="Default select example"
+                        disabled
+                      >
+                        <option selected>+90</option>
+                        <option value="1">+92</option>
+                        <option value="2">+49</option>
+                        <option value="3">+10</option>
+                      </select>
+                      <input
+                        id="not-connected4"
+                        style="width: 100%; padding: 4px"
+                        type="tel"
+                        disabled
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row-content">
+                <div class="question-title">Çalışan*</div>
+                <div class="options">
+                  <select
+                    id="subject-form-select"
+                    class="form-select"
+                    aria-label="Default select example"
+                  >
+                    <option id="employee-form" selected></option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row-content">
+                <div class="question-title">Konu*</div>
+                <div class="options">
+                  <input type="text" id="subject" name="fname" />
+                </div>
+              </div>
+              <div style="align-items: flex-start" class="row-content">
+                <div class="question-title">Açıklama</div>
+
+                <textarea class="explanation"> </textarea>
+              </div>
+              <button style="border: 1px solid #525252" class="save-button">
+                Kaydet
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
