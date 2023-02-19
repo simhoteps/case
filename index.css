@@ -173,7 +173,7 @@
   height: calc(100vh - 120px);
   max-height: calc(100vh - 120px);
   box-sizing: border-box;
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 .tab-contents::-webkit-scrollbar {
   width: 4;
@@ -185,11 +185,10 @@
 .tab-contents::-webkit-scrollbar-track {
   border-radius: 10;
   background-color: transparent;
-} 
+}
 .tab-contents > div {
   display: none;
 }
-
 
 .tab-contents > div:target {
   display: block;
@@ -228,7 +227,6 @@ p {
   margin-left: 40px;
 }
 
-
 /* tab */
 .tab-navigation button {
   display: inline-block;
@@ -258,6 +256,7 @@ p {
   display: flex;
   flex-direction: row;
   width: 100%;
+  height: 48px;
   align-items: center;
   justify-content: flex-end;
   padding-top: 8px;
@@ -487,7 +486,6 @@ input[type="time"] {
 
   .explanation {
     width: 100%;
-  
   }
 }
 
@@ -579,5 +577,9 @@ input[type="time"] {
     height: 145px;
     position: relative;
     gap: 12px;
+  }
+  .save-button {
+    margin-top: 30px;
+    margin-left: 0px;
   }
 }
